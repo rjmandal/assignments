@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>local storage</title>
+    <style>
+        /* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f1f1;
+  color: #333;
+}
+
+/* Block Styles */
+.block {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+h4 {
+  color: #4CAF50;
+  margin-top: 0;
+}
+
+#name {
+  color: #E91E63;
+}
+
+/* Code Block Styles */
+pre {
+  background-color: #212121;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: "Courier New", monospace;
+}
+
+/* Container Styles */
+#my-container {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+/* Input and Button Styles */
+input[type="text"] {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+button {
+  background-color: #3F51B5;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #283593;
+}
+    </style>
+</head>
+<body>
+    <div class="block">
+        <h4 id="name-block">
+            hey there my name is
+            <span id="name">sanjay mandal</span> :) 
+        </h4>
+        <p>here is a code for you</p>
+        <pre><code>console.log("hey there")</code></pre>
+    </div>
+
+    <div id="my-container"></div>
+    <input id="username" type="text" placeholder="enter your name ">
+    <button id="clickButton">click me</button>
+    <script>
+        const button = document.getElementById('clickButton')
+        const uname = document.getElementById('username')
+        const name = document.getElementById('name');
+        button.addEventListener('click',()=>{
+            const value = uname.value;
+            localStorage.setItem("name",value);
+            // const value2 = localStorage.getItem('name');
+            // name.innerText = value2;
+            location.reload();
+        })
+
+        window.addEventListener("load",()=>{
+            const value = localStorage.getItem('name');
+            name.innerText = value;
+        })
+    </script>
+</body>
+</html>
+

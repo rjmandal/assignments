@@ -7,7 +7,22 @@ Try running it for
 Hint - use Date class exposed in JS
 There is no automated test for this one, this is more for you to understand time goes up as computation goes up
 */
-
+// ******************completed********************
 function calculateTime(n) {
-    return 0.01;
+    let sum = 0;
+    for(let i=0;i<n;i++){
+      sum +=i;
+    }
+    return sum;
+    // return 0.01;
 }
+
+  const getBeforeTime = new Date();
+  const beforeTimeInMli =getBeforeTime.getTime();
+//   calculateTime(100);
+//   calculateTime(100000);
+  calculateTime(1000000000);
+  const getAfterTime = new Date();
+  const afterTimeInMli = getAfterTime.getTime();
+  
+  console.log(afterTimeInMli-beforeTimeInMli);

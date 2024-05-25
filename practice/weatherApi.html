@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather API</title>
+  </head>
+  <body>
+    <div>
+      <input id="city-input" type="text" placeholder="Search..." />
+      <button id="search-button">Submit</button>
+    </div>
+    <div>
+      <h3 id="location"></h3>
+      <h3 id="time"></h3>
+      <h3 id="temp"></h3>
+    </div>
+    <script>
+      const button = document.getElementById("search-button");
+      const input = document.getElementById("city-input");
+      const loc =document.getElementById("location");
+      const time= document.getElementById("time");
+      const temp =document.getElementById("temp");
+
+      async function getData(cityName){
+        const promise = await fetch(`http://api.weatherapi.com/v1/current.json?key=a0c1ef40936b4498974191549240405&q=${cityName}&aqi=yes`)
+        return await promise.json();
+      };
+      button.addEventListener("click", async () => {
+          const value = input.value;
+          const result = await getData(value);
+          console.log(result);
+          loc.innerHTML = `${result.location.name},${result.location.region},${result.location.country}`;
+          time.innerHTML = result.location.localtime;
+          temp.innerHTML = result.current.temp_c;
+      });
+    </script>
+  </body>
+</html>
